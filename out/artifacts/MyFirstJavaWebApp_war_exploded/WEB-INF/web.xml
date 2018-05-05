@@ -6,9 +6,30 @@
     <servlet>
         <servlet-name>SayHello</servlet-name>
         <servlet-class>com.mycompany.SayHello</servlet-class>
+        <!--servlet元素用于注册Servlet，它包含有两个主要的子元素：servlet-name和-->
+        <!--servlet-class，分别用于设置Servlet的注册名称和Servlet的完整类名。-->
     </servlet>
     <servlet-mapping>
         <servlet-name>SayHello</servlet-name>
+        <!--同一个Servlet可以被映射到多个URL上，-->
+        <!--即多个<servlet-mapping>元素的<servlet-name>子元素的设置值-->
+        <!--可以是同一个Servlet的注册名。-->
         <url-pattern>/sayhello</url-pattern>
+        <!--浏览器访问servlet的路径，使用/*代表输入任何都可访问-->
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SayGoodBye</servlet-name>
+        <servlet-class>com.mycompany.SayGoodBye</servlet-class>
+        <!--servlet元素用于注册Servlet，它包含有两个主要的子元素：servlet-name和-->
+        <!--servlet-class，分别用于设置Servlet的注册名称和Servlet的完整类名。-->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SayGoodBye</servlet-name>
+        <!--同一个Servlet可以被映射到多个URL上，-->
+        <!--即多个<servlet-mapping>元素的<servlet-name>子元素的设置值-->
+        <!--可以是同一个Servlet的注册名。-->
+        <url-pattern>/saygoodbye</url-pattern>
+        <!--浏览器访问servlet的路径，使用/*代表输入任何都可访问-->
+    </servlet-mapping>
+
 </web-app>
