@@ -11,10 +11,8 @@
     <title>$Title$</title>
 </head>
 <body>
-<%
-    int a=0;
-    a++;
-%>
+
 Yo.
+
 </body>
 </html>
