@@ -1,5 +1,7 @@
 package com.mycompany;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -8,6 +10,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
+import java.util.Random;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +42,27 @@ public class SayHello extends javax.servlet.http.HttpServlet
 //        OutChineseByOutputStream(response);//使用OutputStream流向客户端浏览器输出中文数据
 //        OutChineseByPrintWriter(response);//使用PrintWriter流向客户端浏览器输出中文数据
 //        在开发过程中，如果希望服务器输出什么浏览器就能看到什么，那么在服务器端都要以字符串的形式进行输出。
-        downloadFileByOutputStream(response);//下载文件，通过OutputStream流
+//        downloadFileByOutputStream(response);//下载文件，通过OutputStream流
+//        VcodeByRandNum(request,response);//随机数字验证码
+//        /**
+//         * 1.调用sendRedirect方法实现请求重定向,
+//         * sendRedirect方法内部调用了
+//         * response.setHeader("Location", "/JavaWeb_HttpServletResponse_Study_20140615/index.jsp");
+//         * response.setStatus(HttpServletResponse.SC_FOUND);//设置302状态码，等同于response.setStatus(302);
+//         */
+//        response.sendRedirect("/JavaWeb_HttpServletResponse_Study_20140615/index.jsp");
+//
+//        //2.使用response设置302状态码和设置location响应头实现重定向实现请求重定向
+//        //response.setHeader("Location", "/JavaWeb_HttpServletResponse_Study_20140615/index.jsp");
+//        //response.setStatus(HttpServletResponse.SC_FOUND);//设置302状态码，等同于response.setStatus(302);
+////        服务器发送一个URL地址给浏览器，浏览器拿到URL地址之后，再去请求服务器，
+////        所以这个"/"是给浏览器使用的，此时"/"代表的就是webapps目录，
+////        "/JavaWeb_HttpServletResponse_Study_20140615/index.jsp"
+////        这个地址指的就是"webapps\JavaWeb_HttpServletResponse_Study_20140615\index.jsp"
+////　　      response.sendRedirect("/项目名称/文件夹目录/页面");
+////        这种写法是将项目名称写死在程序中的做法，不灵活，万一哪天项目名称变了，此时就得改程序，
+////        所以推荐使用下面的灵活写法：
+//        response.sendRedirect(request.getContextPath()+"/index.jsp");
 
 
     }
@@ -46,6 +70,47 @@ public class SayHello extends javax.servlet.http.HttpServlet
             throws ServletException, IOException
     {
         doGet(request, response);
+    }
+    private void VcodeByRandNum(HttpServletRequest request,HttpServletResponse response)
+    {
+        response.setHeader("refresh","5");
+        //设置refresh响应头控制浏览器每隔5秒钟刷新一次
+        //1.在内存中创建一张图片
+        BufferedImage image=new BufferedImage(80,20,BufferedImage.TYPE_INT_RGB);
+        //2.得到图片
+        Graphics2D graphics2D=(Graphics2D)image.getGraphics();
+        graphics2D.setColor(Color.WHITE);//设置图片的背景色
+        graphics2D.fillRect(0, 0, 80, 20);//填充背景色
+        //3.向图片上写数据
+        graphics2D.setColor(Color.BLUE);//设置图片上字体的颜色
+        graphics2D.setFont(new Font(null,Font.BOLD,20));
+        graphics2D.drawString(MakeRandNum(),0,20);
+        //4.设置响应头控制浏览器浏览器以图片的方式打开
+        response.setContentType("image/jpeg");//等同于response.setHeader("Content-Type", "image/jpeg");
+        //5.设置响应头控制浏览器不缓存图片数据
+        response.setDateHeader("expries",-1);
+        response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Pragma", "no-cache");
+        //6.将图片写给浏览器
+        try
+        {
+            ImageIO.write(image, "jpg", response.getOutputStream());
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    private String MakeRandNum()
+    {
+        //制造随机数
+        Random random=new Random();
+        String num=random.nextInt(9999999)+"";
+        StringBuffer stringBuffer=new StringBuffer();
+        stringBuffer.append((random.nextInt(9999999)+"").substring(0,7-num.length()));
+        num=stringBuffer.toString()+num;
+        return num;
+
     }
     public void OutChineseByOutputStream(HttpServletResponse response)
             throws ServletException,IOException
@@ -117,5 +182,6 @@ public class SayHello extends javax.servlet.http.HttpServlet
         // 可以处理任意类型的数据，而PrintWriter流是字符流，只能处理字符数据，如果用字符流处理字节数据，
         // 会导致数据丢失。
     }
+
 
 }

@@ -17,14 +17,14 @@
         <url-pattern>/sayhello</url-pattern>
         <!--浏览器访问servlet的路径，使用/*代表输入任何都可访问-->
     </servlet-mapping>
-    <!--<servlet>-->
-        <!--<servlet-name>SayGoodBye</servlet-name>-->
-        <!--<servlet-class>com.mycompany.SayGoodBye</servlet-class>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>SayGoodBye</servlet-name>-->
-        <!--<url-pattern>/saygoodbye</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <servlet>
+        <servlet-name>LoginSevlet</servlet-name>
+        <servlet-class>com.mycompany.LoginSevlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginSevlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
     <!--<context-param>-->
         <!--<param-name>url</param-name>-->
         <!--<param-value>jdbc:mysql://localhost:3306/test</param-value>-->
