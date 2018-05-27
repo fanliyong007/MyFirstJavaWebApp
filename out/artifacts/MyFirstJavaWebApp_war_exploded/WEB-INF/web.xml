@@ -18,12 +18,44 @@
         <!--浏览器访问servlet的路径，使用/*代表输入任何都可访问-->
     </servlet-mapping>
     <servlet>
-        <servlet-name>LoginSevlet</servlet-name>
-        <servlet-class>com.mycompany.LoginSevlet</servlet-class>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.mycompany.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LoginSevlet</servlet-name>
-        <url-pattern>/login</url-pattern>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DrawImageServlet</servlet-name>
+        <servlet-class>com.mycompany.DrawImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DrawImageServlet</servlet-name>
+        <url-pattern>/pic</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RequestDemo01</servlet-name>
+        <servlet-class>com.mycompany.RequestDemo01</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDemo01</servlet-name>
+        <url-pattern>/requestdemo01</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RequestDemo02</servlet-name>
+        <servlet-class>com.mycompany.RequestDemo02</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDemo02</servlet-name>
+        <url-pattern>/requestdemo02</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RequestDemo03</servlet-name>
+        <servlet-class>com.mycompany.RequestDemo03</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDemo03</servlet-name>
+        <url-pattern>/requestdemo03</url-pattern>
     </servlet-mapping>
     <!--<context-param>-->
         <!--<param-name>url</param-name>-->
