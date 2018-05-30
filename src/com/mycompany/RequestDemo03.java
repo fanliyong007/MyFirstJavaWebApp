@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Map;
 
 @WebServlet(name = "RequestDemo03")
 //getParameter(String)方法(常用)
@@ -67,12 +69,45 @@ public class RequestDemo03 extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");//设置客户端浏览器以UTF-8编码解析数据
         response.getWriter().write(htmlStr);//输出htmlStr里面的内容到客户端浏览器显示
 
-
+        response.getWriter().println("<a>now use getParametersNames<br>");
+        UsegetParameterMap(request,response);
+        response.getWriter().println("<a>now use getParameterMap<br>");
+        UsegetParameterMap(request,response);
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
         doPost(request,response);
 
+    }
+    public void UsegetParameterNames(HttpServletResponse response,HttpServletRequest request)
+            throws IOException
+    {
+        Enumeration<String> paramNames = request.getParameterNames();//获取所有的参数名
+        while (paramNames.hasMoreElements())
+        {
+            String name = paramNames.nextElement();//得到参数名
+            String value = request.getParameter(name);//通过参数名获取对应的值
+            response.getWriter().println(MessageFormat.format("{0}={1}<br>", name,value));
+        }
+    }
+    public void UsegetParameterMap(HttpServletRequest request,HttpServletResponse response)
+            throws IOException
+    {
+        //request对象封装的参数是以Map的形式存储的
+        Map<String, String[]> paramMap = request.getParameterMap();
+        for(Map.Entry<String, String[]> entry :paramMap.entrySet()){
+            String paramName = entry.getKey();
+            String paramValue = "";
+            String[] paramValueArr = entry.getValue();
+            for (int i = 0; paramValueArr!=null && i < paramValueArr.length; i++) {
+                if (i == paramValueArr.length-1) {
+                    paramValue+=paramValueArr[i];
+                }else {
+                    paramValue+=paramValueArr[i]+",";
+                }
+            }
+            response.getWriter().println(MessageFormat.format("{0}={1}<br>", paramName,paramValue));
+        }
     }
 }

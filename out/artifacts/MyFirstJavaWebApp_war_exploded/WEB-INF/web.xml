@@ -57,6 +57,31 @@
         <servlet-name>RequestDemo03</servlet-name>
         <url-pattern>/requestdemo03</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RequestDemo04</servlet-name>
+        <servlet-class>com.mycompany.RequestDemo04</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDemo04</servlet-name>
+        <url-pattern>/requestdemo04</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CookieDemo01</servlet-name>
+        <servlet-class>com.mycompany.CookieDemo01</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CookieDemo01</servlet-name>
+        <url-pattern>/cookiedemo01</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SessionDemo1</servlet-name>
+        <servlet-class>com.mycompany.SessionDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionDemo1</servlet-name>
+        <url-pattern>/sessiondemo1</url-pattern>
+    </servlet-mapping>
+
     <!--<context-param>-->
         <!--<param-name>url</param-name>-->
         <!--<param-value>jdbc:mysql://localhost:3306/test</param-value>-->
