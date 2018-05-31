@@ -81,10 +81,46 @@
         <servlet-name>SessionDemo1</servlet-name>
         <url-pattern>/sessiondemo1</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>com.mycompany.IndexServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/indexservlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>BuyServlet</servlet-name>
+        <servlet-class>com.mycompany.BuyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BuyServlet</servlet-name>
+        <url-pattern>/buyservlet</url-pattern>
+    </servlet-mapping><servlet>
+        <servlet-name>ListCartServlet</servlet-name>
+        <servlet-class>com.mycompany.ListCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListCartServlet</servlet-name>
+        <url-pattern>/listcartservlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DoFormServlet</servlet-name>
+        <servlet-class>com.mycompany.DoFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DoFormServlet</servlet-name>
+        <url-pattern>/doformservlet</url-pattern>
+    </servlet-mapping>
     <!--<context-param>-->
         <!--<param-name>url</param-name>-->
         <!--<param-value>jdbc:mysql://localhost:3306/test</param-value>-->
     <!--</context-param>-->
+
+    <!-- 设置Session的有效时间:以分钟为单位-->
+    <!--<session-config>-->
+        <!--<session-timeout>15</session-timeout>-->
+    <!--</session-config>-->
+
 
 </web-app>
