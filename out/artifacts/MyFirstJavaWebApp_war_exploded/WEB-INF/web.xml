@@ -121,6 +121,16 @@
     <!--<session-config>-->
         <!--<session-timeout>15</session-timeout>-->
     <!--</session-config>-->
+    <!-- 针对404错误的处理页面 -->
+    <!--<error-page>-->
+        <!--<error-code>404</error-code>-->
+        <!--<location>/ErrorPage/404Error.jsp</location>-->
+    <!--</error-page>-->
+    <!-- 针对500错误的处理页面 -->
+    <!--<error-page>-->
+        <!--<error-code>500</error-code>-->
+        <!--<location>/ErrorPage/500Error.jsp</location>-->
+    <!--</error-page>-->
 
 
 </web-app>

@@ -10,12 +10,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "ListCartServlet")
-public class ListCartServlet extends HttpServlet {
+@WebServlet(name = "ListCartServlet", urlPatterns = {"/demo"})
+
+public class ListCartServlet extends HttpServlet
+{
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        doGet(request,response);
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,14 +27,16 @@ public class ListCartServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         List<Book> list = (List) session.getAttribute("list");
-        if(list==null || list.size()==0){
+        if (list == null || list.size() == 0)
+        {
             out.write("对不起，您还没有购买任何商品!!");
             return;
         }
 
         //显示用户买过的商品
         out.write("您买过如下商品:<br>");
-        for(Book book : list){
+        for (Book book : list)
+        {
             out.write(book.getName() + "<br/>");
         }
     }
